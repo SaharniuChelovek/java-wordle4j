@@ -16,9 +16,8 @@ public class WordleGameTest {
     @BeforeEach
     void gameStart() throws IOException {
 
-         final String WORDS_FILE_NAME = "words_ru.txt";
-         final int STEPS = 6;
-
+        final String WORDS_FILE_NAME = "words_ru.txt";
+        final int STEPS = 6;
 
 
         PrintWriter logger = new PrintWriter(System.out, true);
@@ -36,7 +35,7 @@ public class WordleGameTest {
         String hint = game.giveHint();
         Assertions.assertNotEquals(hint, game.getAnswer());
         int listLength = game.getDictionary().getWords().size();
-        Assertions.assertEquals(listLength-1, game.getDictionaryForHint().getWords().size());
+        Assertions.assertEquals(listLength - 1, game.getDictionaryForHint().getWords().size());
         Assertions.assertEquals(hint.length(), game.getAnswer().length());
     }
 
@@ -60,7 +59,7 @@ public class WordleGameTest {
         List<String> emptyList = new ArrayList<>();
         game.getDictionary().setWords(emptyList);
         Assertions.assertThrows(NoDictionaryException.class, () -> {
-           game.match("рубль");
+            game.match("рубль");
         });
     }
 }

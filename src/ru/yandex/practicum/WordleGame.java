@@ -38,6 +38,7 @@ public class WordleGame {
         this.endSteps = endSteps;
 
     }
+
     //история попыток
     private LinkedHashMap<String, String> history = new LinkedHashMap<>();
     //буквы, которые есть в слове
@@ -84,7 +85,8 @@ public class WordleGame {
             return false;
         }
     }
-//метод вывода символьной "маски" слова
+
+    //метод вывода символьной "маски" слова
     public String match(String guess) throws WordNotInDictionaryException, NoDictionaryException {
         logger.println("идет процесс создания символьной 'маски' слова");
 
@@ -153,11 +155,11 @@ public class WordleGame {
         logger.println("маска создана");
         return resultInLine;
     }
-//метод, который генерирует подсказки на основе уже введенных данных
+
+    //метод, который генерирует подсказки на основе уже введенных данных
     public String giveHint() {
         logger.println("идет поиск слова-подсказки");
-        boolean info = absentLetters.isEmpty() && presentLetters.isEmpty() && correctPositions.isEmpty()
-                && wrongPositions.isEmpty();
+        boolean info = absentLetters.isEmpty() && presentLetters.isEmpty() && correctPositions.isEmpty() && wrongPositions.isEmpty();
         /*если пользователь нажмет enter в самом начале, то у программы по просту не будет данных для генерации
         подсказки. Потому в таком случае следует вывести рандомное слово из словаря
         * */

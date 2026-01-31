@@ -26,7 +26,7 @@ public class Wordle {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         try (FileOutputStream fos = new FileOutputStream(LOG_FILE_NAME);
-             Writer writer = new OutputStreamWriter(fos, StandardCharsets.UTF_8) ) {
+             Writer writer = new OutputStreamWriter(fos, StandardCharsets.UTF_8)) {
 
             PrintWriter logger = new PrintWriter(writer, true);
 
@@ -45,7 +45,7 @@ public class Wordle {
                         String clue = game.giveHint();
                         System.out.println(clue);
                         System.out.println(game.match(clue));
-                        game.setStartStep(game.getStartStep()+1);
+                        game.setStartStep(game.getStartStep() + 1);
                         if (game.isAnswer(clue)) {
                             System.out.println("Подсказки нашли слово за вас");
                             return;
@@ -58,7 +58,7 @@ public class Wordle {
                         continue;
                     }
                     System.out.println(game.match(variant));
-                    game.setStartStep(game.getStartStep()+1);
+                    game.setStartStep(game.getStartStep() + 1);
                     if (game.isAnswer(variant)) {
                         System.out.println("Вы выйграли");
                         return;

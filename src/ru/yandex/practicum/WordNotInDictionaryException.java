@@ -1,6 +1,6 @@
 package ru.yandex.practicum;
 
-public class WordNotInDictionaryException extends Exception{
+public class WordNotInDictionaryException extends Exception {
     public WordNotInDictionaryException() {
         super();
     }

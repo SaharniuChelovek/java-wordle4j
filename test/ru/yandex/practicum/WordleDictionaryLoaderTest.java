@@ -45,7 +45,7 @@ public class WordleDictionaryLoaderTest {
     }
 
     @Test
-    void  throwIOException() {
+    void throwIOException() {
         Assertions.assertThrows(IOException.class, () -> {
             wordleDictionaryLoader.loadFromFile("");
         });

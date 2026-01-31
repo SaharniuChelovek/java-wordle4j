@@ -22,6 +22,7 @@ public class WordleDictionaryTest {
         dictionary = loader.loadFromFile("words_ru.txt");
 
     }
+
     @Test
     public void copyMethodTest() {
 
@@ -42,6 +43,7 @@ public class WordleDictionaryTest {
         //отфильтрованный список и обычный - очевидно должны быть разными
         logger.println("тест filtherListTest пройден успешно");
     }
+
     @Test
     public void randomWordTest() {
         String randomWord = dictionary.getRandomWord();

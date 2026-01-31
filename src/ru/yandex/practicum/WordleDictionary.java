@@ -29,13 +29,13 @@ public class WordleDictionary {
             StringBuilder wordForList = new StringBuilder(word.toLowerCase());
             if (wordForList.length() == 5) {
                 while (wordForList.indexOf("ё") != -1) {
-                    wordForList.replace(wordForList.indexOf("ё"), wordForList.indexOf("ё")+1, "е");
+                    wordForList.replace(wordForList.indexOf("ё"), wordForList.indexOf("ё") + 1, "е");
                 }
                 filtredList.add(wordForList.toString());
             }
         }
 
-        logger.println(String.format("Филтрация прошла успешно, в список попало %d слов",filtredList.size() ));
+        logger.println(String.format("Филтрация прошла успешно, в список попало %d слов", filtredList.size()));
         return filtredList;
     }
 
@@ -55,7 +55,8 @@ public class WordleDictionary {
     public List<String> getWords() {
         return words;
     }
-//этот метод копирует словарь, создавая новый объект (это требуется для посказок)
+
+    //этот метод копирует словарь, создавая новый объект (это требуется для посказок)
     public WordleDictionary copy() {
         List<String> words2 = new ArrayList<>(this.words);
         return new WordleDictionary(this.logger, words2);
