@@ -29,16 +29,6 @@ public class WordleGame {
 
     private WordleDictionary dictionaryForHint;
 
-    public WordleGame(PrintWriter logger, String answer, int startSteps, WordleDictionary dictionary, int endSteps) {
-        this.logger = logger;
-        this.answer = answer;
-        this.startStep = startSteps;
-        this.dictionary = dictionary;
-        this.dictionaryForHint = dictionary.copy();
-        this.endSteps = endSteps;
-
-    }
-
     //история попыток
     private LinkedHashMap<String, String> history = new LinkedHashMap<>();
     //буквы, которые есть в слове
@@ -49,6 +39,16 @@ public class WordleGame {
     private Map<Integer, Character> correctPositions = new HashMap<>();
     // неверные позиции
     private Map<Character, Set<Integer>> wrongPositions = new HashMap<>();
+
+    public WordleGame(PrintWriter logger, String answer, int startSteps, WordleDictionary dictionary, int endSteps) {
+        this.logger = logger;
+        this.answer = answer;
+        this.startStep = startSteps;
+        this.dictionary = dictionary;
+        this.dictionaryForHint = dictionary.copy();
+        this.endSteps = endSteps;
+
+    }
 
     public WordleDictionary getDictionaryForHint() {
         return dictionaryForHint;
@@ -163,9 +163,11 @@ public class WordleGame {
         /*если пользователь нажмет enter в самом начале, то у программы по просту не будет данных для генерации
         подсказки. Потому в таком случае следует вывести рандомное слово из словаря
         * */
+
         if (info) {
             String randomWord = dictionaryForHint.getRandomWord();
-            dictionaryForHint.getWords().remove(randomWord);
+
+            dictionaryForHint.getWords().removeIf(word -> word.equals(randomWord));
             logger.println("Выкинуто рандомное слово из словаря");
             return randomWord;
         }
@@ -225,7 +227,7 @@ public class WordleGame {
 
             if (isWrongWord) continue;
             //найденное слово-подсказка из словаря вычеркивается (иначе метод будет давать одно и то же слово)
-            dictionaryForHint.getWords().remove(word);
+            dictionaryForHint.getWords().removeIf(word1 -> word1.equals(word));
             logger.println("подсказка найдена");
             return word;
         }

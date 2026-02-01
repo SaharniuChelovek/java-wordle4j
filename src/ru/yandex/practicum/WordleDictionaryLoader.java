@@ -49,11 +49,15 @@ public class WordleDictionaryLoader {
              BufferedReader reader = new BufferedReader(fileReader)) {
             while (reader.ready()) {
                 String readWord = reader.readLine();
+                if (readWord.isBlank()) {
+                    throw new EmptyLineException("Пустая линия в читаемом файле");
+                }
                 file.add(readWord);
             }
+        } catch (EmptyLineException e) {
+            logger.println(e.getMessage());
         } catch (IOException e) {
             logger.println("Произошла ошибка при чтении файла" + dictionaryFile.getName());
-
         }
 
         return file;
